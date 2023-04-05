@@ -610,7 +610,20 @@ SELECT * FROM profiles WHERE user_id in (1, 2, 3, 4, 5, ...)
             <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Use atribuição em massa<span
                 class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
             <article class="details pl-3 mt-5 text-lg hidden" role="contentinfo">
-                <p>logo mais</p>
+                <p>Quando passar dados de uma requisição para uma model realizar um novo registro, tire proveito das convenções de nomes, e faça uma atribuição em massa, que basicamente vai parametrizar os atributos de requisição e refletir nos atributos da model.</p>
+                <h4 class="text-xl my-3 font-bold">Isso aqui é ruim</h4>
+<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+$post = new Post;
+$post->title = $request->title;
+$post->content = $request->content;
+$post->verified = $request->verified;
+$post->save();
+</pre>
+                <h4 class="text-xl my-3 font-bold">Como melhorar isso?</h4>
+<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+$post->create($request->all());
+</pre>
+            <p>Isso reduz muito a quantidade de linhas escritas, sem perder a legibilidade.</p>
             </article>
         </section>
         <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="referencias">
