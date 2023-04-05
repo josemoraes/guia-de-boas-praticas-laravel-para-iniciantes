@@ -248,8 +248,197 @@ public function getArticles()
         <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="coloque-um-nome-decente">
             <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Coloque um nome decente!<span
                 class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
-            <article class="details pl-3 mt-5 text-lg hidden" role="contentinfo">
-                <p>logo mais</p>
+            <article class="details pl-3 mt-5 text-lg" role="contentinfo">
+                <p>Isso aqui vem direto dos ensinamentos do Uncle Bob (Robert C. Martin). Use sempre nomes expressivos em variáveis, funções, classes, constantes, e assim por diante.</p>
+                <p>Nomes expressivos vão tornar seu código óbvio e simples de ser lido. E no mundo do código, ser simples é coisa fina. Por exemplo:</p>
+                <h4 class="text-xl my-3 font-bold">Isso aqui é ruim</h4>
+<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+if (count((array) $b->getQuery()->joins) > 0)
+{
+    ...
+}
+</pre>
+                <h4 class="text-xl my-3 font-bold">Isso aqui é pior</h4>
+<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+// Verifica se a query possui joins
+if (count((array) $b->getQuery()->joins) > 0)
+{
+    ...
+}
+</pre>
+                <p>Por que é pior? Você deve estar se perguntando, afinal, você está dizendo o que o código faz.</p>
+                <p>É que comentários em códigos, podem esconder detalhes e ao longo do tempo, se essa declaração for modificada, será que a pessoa que a modificou se dará o trabalho de alterar o comentário? Nos meus anos de prática nunca vi isso acontecer (talvez seja a bolha né?).</p>
+                <h4 class="text-xl my-3 font-bold">Como melhorar isso?</h4>
+<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+if ($this->hasJoins()) 
+{
+    ...
+}
+</pre>
+                <p>Viu como a declaração fica tão óbvia ao ponto de ser bobo? Não precisei de nenhum comentário explicando o que significa a declaração. O própria nome já diz: <strong>hasJoins</strong> (<strong>possuiLigacoes</strong> - em tradução livre).</p>
+                <p>Pare hoje de colocar nome de variável como <i>x</i> ou <i>t</i>. Veja seu código como um filho seu e coloque bons nomes (a não ser que tu seja o Elon Musk. Se for, ignore o comentário anterior).</p>
+                <p>Ainda sobre este tópico vale ressaltar que o framework Laravel possui uma convenção de nomes que recomendo ser respeitada. Ela não é obrigatória, mas seu uso potencializará as comodidades que o framework oferece como: Geração de códigos usando o artisan cli; Acesso à recursos sem a necessidade de configurações extras; e o mais importante, um padrão de escrita que se respeitado, beneficiará toda a equipe no longo prazo, reduzindo a curva de aprendizagem e acelerando a geração de valor.</p>
+                <table class="border-collapse border border-slate-400 mt-5">
+                    <thead class="border border-slate-300">
+                        <tr>
+                            <th class="border border-slate-300 p-3">
+                                <strong>Recurso</strong></th>
+                            <th class="border border-slate-300 p-3"><strong>Qual a
+                                    convenção?</strong></th>
+                            <th class="border border-slate-300 p-3"><strong>Isso aqui é
+                                    Ruim</strong></th>
+                            <th class="border border-slate-300 p-3"><strong>Isso aqui é
+                                    Excelente</strong></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-slate-300 p-3">Model</td>
+                            <td class="border border-slate-300 p-3">singular</td>
+                            <td class="border border-slate-300 p-3">Users</td>
+                            <td class="border border-slate-300 p-3">User</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-slate-300 p-3">Propriedade de uma Model</td>
+                            <td class="border border-slate-300 p-3">snake_case</td>
+                            <td class="border border-slate-300 p-3">$model-&gt;createdAt</td>
+                            <td class="border border-slate-300 p-3">$model-&gt;created_at</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-slate-300 p-3">Migrações</td>
+                            <td class="border border-slate-300 p-3">nome expressivo</td>
+                            <td class="border border-slate-300 p-3">2017_01_01_000000_articles</td>
+                            <td class="border border-slate-300 p-3">2017_01_01_000000_create_articles_table</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-slate-300 p-3">Tabelas</td>
+                            <td class="border border-slate-300 p-3">plural</td>
+                            <td class="border border-slate-300 p-3">article_comment, articleComments</td>
+                            <td class="border border-slate-300 p-3">article_comments</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-slate-300 p-3">Colunas em tabelas</td>
+                            <td class="border border-slate-300 p-3">snake_case sem o nome da model</td>
+                            <td class="border border-slate-300 p-3">MetaTitle; article_meta_title</td>
+                            <td class="border border-slate-300 p-3">meta_title</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-slate-300 p-3">Chaves primárias</td>
+                            <td class="border border-slate-300 p-3">-</td>
+                            <td class="border border-slate-300 p-3">custom_id</td>
+                            <td class="border border-slate-300 p-3">id</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-slate-300 p-3">Chaves estrangeiras</td>
+                            <td class="border border-slate-300 p-3">singular com nome da model e com o sufixo _id</td>
+                            <td class="border border-slate-300 p-3">ArticleId, id_article, articles_id</td>
+                            <td class="border border-slate-300 p-3">article_id</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-slate-300 p-3">relacionamentos hasOne ou belongsTo</td>
+                            <td class="border border-slate-300 p-3">singular</td>
+                            <td class="border border-slate-300 p-3">articleComments, article_comment</td>
+                            <td class="border border-slate-300 p-3">articleComment</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-slate-300 p-3">Todos os outros relacionamentos</td>
+                            <td class="border border-slate-300 p-3">plural</td>
+                            <td class="border border-slate-300 p-3">articleComment, article_comments</td>
+                            <td class="border border-slate-300 p-3">articleComments</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-slate-300 p-3">Tabela Pivot</td>
+                            <td class="border border-slate-300 p-3">nomes das models no singular e em ordem alfabética</td>
+                            <td class="border border-slate-300 p-3">user_article, articles_users</td>
+                            <td class="border border-slate-300 p-3">article_user</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-slate-300 p-3">Collection</td>
+                            <td class="border border-slate-300 p-3">descritiva e no plural</td>
+                            <td class="border border-slate-300 p-3">$active, $data</td>
+                            <td class="border border-slate-300 p-3">$activeUsers = User::active()-&gt;get()</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-slate-300 p-3">Controller</td>
+                            <td class="border border-slate-300 p-3">singular</td>
+                            <td class="border border-slate-300 p-3">ArticlesController</td>
+                            <td class="border border-slate-300 p-3">ArticleController</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-slate-300 p-3">Route</td>
+                            <td class="border border-slate-300 p-3">plural</td>
+                            <td class="border border-slate-300 p-3">article/1</td>
+                            <td class="border border-slate-300 p-3">articles/1</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-slate-300 p-3">Named route</td>
+                            <td class="border border-slate-300 p-3">snake_case sem notação de ponto</td>
+                            <td class="border border-slate-300 p-3">users.show-active, show-active-users</td>
+                            <td class="border border-slate-300 p-3">users.show_active</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-slate-300 p-3">Métodos</td>
+                            <td class="border border-slate-300 p-3">camelCase</td>
+                            <td class="border border-slate-300 p-3">get_all</td>
+                            <td class="border border-slate-300 p-3">getAll</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-slate-300 p-3">Métodos em controllers</td>
+                            <td class="border border-slate-300 p-3">convenção: store, view, list, update, destroy</td>
+                            <td class="border border-slate-300 p-3">saveArticle</td>
+                            <td class="border border-slate-300 p-3">store</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-slate-300 p-3">Métodos em classes de teste</td>
+                            <td class="border border-slate-300 p-3">camelCase</td>
+                            <td class="border border-slate-300 p-3">test_guest_cannot_see_article</td>
+                            <td class="border border-slate-300 p-3">testGuestCannotSeeArticle</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-slate-300 p-3">Variáveis</td>
+                            <td class="border border-slate-300 p-3">camelCase</td>
+                            <td class="border border-slate-300 p-3">$articles_with_author</td>
+                            <td class="border border-slate-300 p-3">$articlesWithAuthor</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-slate-300 p-3">Object</td>
+                            <td class="border border-slate-300 p-3">descritiva no singular</td>
+                            <td class="border border-slate-300 p-3">$users, $obj</td>
+                            <td class="border border-slate-300 p-3">$activeUser = User::active()-&gt;first()</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-slate-300 p-3">Config e arquivos de linguagem</td>
+                            <td class="border border-slate-300 p-3">snake_case</td>
+                            <td class="border border-slate-300 p-3">ArticlesEnabled; articles-enabled</td>
+                            <td class="border border-slate-300 p-3">articles_enabled</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-slate-300 p-3">View</td>
+                            <td class="border border-slate-300 p-3">kebab-case</td>
+                            <td class="border border-slate-300 p-3">showFiltered.blade.php, show_filtered.blade.php
+                            </td>
+                            <td class="border border-slate-300 p-3">show-filtered.blade.php</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-slate-300 p-3">Config</td>
+                            <td class="border border-slate-300 p-3">snake_case</td>
+                            <td class="border border-slate-300 p-3">googleCalendar.php, google-calendar.php</td>
+                            <td class="border border-slate-300 p-3">google_calendar.php</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-slate-300 p-3">Contract (interface)</td>
+                            <td class="border border-slate-300 p-3">adjetivo ou substantivo</td>
+                            <td class="border border-slate-300 p-3">AuthenticationInterface, IAuthentication</td>
+                            <td class="border border-slate-300 p-3">Authenticatable</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-slate-300 p-3">Trait</td>
+                            <td class="border border-slate-300 p-3">adjetivo</td>
+                            <td class="border border-slate-300 p-3">NotificationTrait</td>
+                            <td class="border border-slate-300 p-3">Notifiable</td>
+                        </tr>
+                    </tbody>
+                </table>
             </article>
         </section>
         <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="nao-acesse-variaveis-de-ambiente-diretamento-pelo-env">
