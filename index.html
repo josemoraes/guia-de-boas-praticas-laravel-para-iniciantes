@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Boas Práticas - Laravel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Nunito+Sans:wght@300;400;900&family=Ubuntu:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Nunito Sans', sans-serif;
+        }
+    </style>
+</head>
+<body class="py-10 bg-gray-100 flex flex-col items-center justify-center">
+    <header class="w-8/12">
+        <h1 class="text-5xl font-bold text-red-500">Guia de Boas Práticas com Laravel</h1>
+        <h2 class="text-2xl font-bold text-gray-500">( para iniciantes )</h2>
+    </header>
+    <main class="w-8/12">
+        <section class="my-10">
+            <article class="text-lg leading-relaxed">
+                <p>Olá, Dev!</p>
+                <p>Suponho que você seja um iniciante na área de programação. Logo, me arrisco a dizer que na maior parte do tempo em que você está dedicado à aprender mais sobre a área, está sempre à procura de qual a nova tendência, ferramenta, ou tecnologia precisa aprender para conseguir se destacar.</p>
+                <p>E se te disser que isso é besteira?</p>
+                <p>Com o passar dos anos, a experiência e a exposição à ambientes desafiadores te mostram que os fundamentos são muito mais importantes que qualquer nova tendência atual.</p>
+                <p>Manter um software é muito mais trabalhoso, do que criar um do zero. Talvez seja por isso, que tenho certeza que já deve ter ouvido, ou dito algo parecido com: </p>
+                <blockquote class="border-l-4 border-red-400 bg-gray-200 my-2 p-3 italic">“E se a gente refizesse isso com <coloque aqui qual a tecnologia da moda>?”</blockquote>
+                <p>No que Eu acredito? Que software bom, é aquele que é usado. Tecnologia boa é qualquer uma que resolve o seu problema, aliás, o que é uma linguagem, ou framework senão mais uma ferramenta no que deveria ser a sua caixa de ferramentas? </p>
+                <blockquote class="border-l-4 border-red-400 bg-gray-200 my-2 p-3 italic">Acredito que o bom código é aquele que possui uma leitura e entendimento simples e óbvio. Que permita uma fácil manutenção e evolução.</blockquote>
+                <p>Por isso, esse material será focado em ajudar você, desenvolvedor Laravel, a parar de buscar alternativas em outras linguagens, ou frameworks, sem antes ter explorado o que o Laravel tem de melhor a te oferecer. Construindo softwares com alta manutenabilidade e extensibilidade.</p>
+                <p>Portanto, o conteúdo que você vai encontrar aqui será claro e direto. Você deverá usá-lo como mais uma ferramenta no seu arsenal. Sendo assim, você pode acessar diretamente as seções de interesse, sem ter que ler as anteriores.</p>
+                <p>Meu objetivo é que Você seja visto como um excelente profissional, que aplica boas práticas e escreve um código com alto nível de manutenabilidade.</p>
+            </article>
+        </section>
+        <section class="collapsible-card border-2 border-gray-400 rounded mt-3 p-3 text-left" data-card-name="sua-responsabilidade-e-uma-so">
+            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Sua responsabilidade é uma só<span
+                class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
+            <article class="details pl-3 mt-2 hidden" role="contentinfo">
+                <p>logo mais</p>
+            </article>
+        </section>
+        <section class="collapsible-card border-2 border-gray-400 rounded mt-3 p-3 text-left" data-card-name="controllers-devem-ser-finas">
+            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Controllers devem ser "finas"<span
+                class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
+            <article class="details pl-3 mt-2 hidden" role="contentinfo">
+                <p>logo mais</p>
+            </article>
+        </section>
+        <section class="collapsible-card border-2 border-gray-400 rounded mt-3 p-3 text-left" data-card-name="valide-suas-requisicoes-do-jeito-certo">
+            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Valide suas requisições do jeito certo<span
+                class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
+            <article class="details pl-3 mt-2 hidden" role="contentinfo">
+                <p>logo mais</p>
+            </article>
+        </section>
+        <section class="collapsible-card border-2 border-gray-400 rounded mt-3 p-3 text-left" data-card-name="ja-diziam-os-menudos-nao-se-repita">
+            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Já diziam os Menudos: "Não se repita"<span
+                class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
+            <article class="details pl-3 mt-2 hidden" role="contentinfo">
+                <p>logo mais</p>
+            </article>
+        </section>
+        <section class="collapsible-card border-2 border-gray-400 rounded mt-3 p-3 text-left" data-card-name="coloque-um-nome-decente">
+            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Coloque um nome decente!<span
+                class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
+            <article class="details pl-3 mt-2 hidden" role="contentinfo">
+                <p>logo mais</p>
+            </article>
+        </section>
+        <section class="collapsible-card border-2 border-gray-400 rounded mt-3 p-3 text-left" data-card-name="nao-acesse-variaveis-de-ambiente-diretamento-pelo-env">
+            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Não acesse variáveis de ambiente diretamente pelo .env<span
+                class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
+            <article class="details pl-3 mt-2 hidden" role="contentinfo">
+                <p>logo mais</p>
+            </article>
+        </section>
+        <section class="collapsible-card border-2 border-gray-400 rounded mt-3 p-3 text-left" data-card-name="nao-acabe-com-a-memoria-use-chunk">
+            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Não acabe com a memória! Use chunk<span
+                class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
+            <article class="details pl-3 mt-2 hidden" role="contentinfo">
+                <p>logo mais</p>
+            </article>
+        </section>
+        <section class="collapsible-card border-2 border-gray-400 rounded mt-3 p-3 text-left" data-card-name="seja-esperto-use-acessors-e-mutators">
+            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Seja esperto! Use acessors e mutators<span
+                class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
+            <article class="details pl-3 mt-2 hidden" role="contentinfo">
+                <p>logo mais</p>
+            </article>
+        </section>
+        <section class="collapsible-card border-2 border-gray-400 rounded mt-3 p-3 text-left" data-card-name="um-blade-sem-consultas-por-favor">
+            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Um Blade sem consultas, por favor<span
+                class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
+            <article class="details pl-3 mt-2 hidden" role="contentinfo">
+                <p>logo mais</p>
+            </article>
+        </section>
+        <section class="collapsible-card border-2 border-gray-400 rounded mt-3 p-3 text-left" data-card-name="use-atribuicao-em-massa">
+            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Use atribuição em massa<span
+                class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
+            <article class="details pl-3 mt-2 hidden" role="contentinfo">
+                <p>logo mais</p>
+            </article>
+        </section>
+        <section class="collapsible-card border-2 border-gray-400 rounded mt-3 p-3 text-left" data-card-name="use-atribuicao-em-massa">
+            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Referências<span
+                class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
+            <article class="details pl-6 mt-2 hidden" role="contentinfo">
+                <ul class="list-disc">
+                    <li><a href="https://laravel.com/docs/9.x/installation">Documentação oficial do Laravel</a></li>
+                    <li><a href="https://github.com/jonaselan/laravel-best-practices">Laravel best practices</a></li>
+                    <li>Clean Code: A Handbook of Agile Software Craftsmanship. Martin, R.C. 9780132350884. 2009. Prentice Hall</li>
+                </ul>
+            </article>
+        </section>
+    </main>
+    <script>
+        const CardView = {
+            card: null,
+            toggleButton: null,
+            init(element) {
+                this.card = element;
+                this.toggleButton = this.card.querySelector('.show-details');
+                this.toggleButton.addEventListener('click', this.toggleDetails.bind(this));
+                return this;
+            },
+            toggleDetails() {
+                const details = this.card.querySelector('.details')
+                if (details.classList.value.includes('hidden')) {
+                    details.classList.remove('hidden');
+                    this.toggleButton.innerText = 'ocultar';
+                    console.log(this.toggleButton);
+                    return;
+                }
+                this.toggleButton.innerText = 'exibir';
+                details.classList.add('hidden');
+            }
+        };
+    
+        const cards = new Map();
+    
+        document.querySelectorAll('.collapsible-card').forEach(el => {
+            const view = Object.create(CardView);
+            cards.set(el.getAttribute("data-card-name"), view.init(el))
+        });
+    
+    </script>
+</body>
+</html>
