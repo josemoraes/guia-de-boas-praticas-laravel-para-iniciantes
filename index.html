@@ -114,8 +114,47 @@ public function getUserData()
         <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="controllers-devem-ser-finas">
             <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Controllers devem ser "finas"<span
                 class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
-            <article class="details pl-3 mt-5 text-lg hidden" role="contentinfo">
-                <p>logo mais</p>
+            <article class="details pl-3 mt-5 text-lg" role="contentinfo">
+                <p>Existe uma expressão na comunidade Laravel que diz (em tradução livre):</p>
+                <blockquote class="border-l-4 border-red-400 bg-gray-200 my-2 p-3 italic">Tenha models “gordos” e controllers “finos”</blockquote>
+                <p>Na prática, isso quer dizer que você não deve ter regras de negócio, nem consultas de banco nas suas controllers.</p>
+                <h4 class="text-xl my-3 font-bold">Isso aqui é ruim</h4>
+<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+public function index()
+{
+    $users = User::verified()
+        ->with(['posts' => function ($q) {
+            $q->where('created_at', '>', Carbon::today()->subWeek());
+        }])
+        ->get();
+
+    return view('index', ['users' => $users]);
+}
+</pre>
+                <p>Veja que toda a definição de consulta está definida na controller. Isso é péssimo, pois cruza as fronteiras de responsabilidade de uma controller, que deve apenas direcionar a model/regra de negócio que será entregue para a camada de apresentação.</p>
+                <h4 class="text-xl my-3 font-bold">Como melhorar isso?</h4>
+<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+// Na Controller
+public function index()
+{
+    return view('index', ['users' => $this->user->getWithNewPosts()]);
+}
+
+// Na Model
+class Client extends Model
+{
+    public function getWithNewPosts()
+    {
+        return $this->verified()
+            ->with(['posts' => function ($q) {
+                $q->where('created_at', '>', Carbon::today()->subWeek());
+            }])
+            ->get();
+    }
+}
+</pre>
+                <p>Perceba que agora a controller apenas indica que os usuários a serem apresentados devem possuir os <i>posts</i> mais recentes, sem se importar como isso é feito na model.</p>
+                <p>Isso vai manter seu código muito mais organizado e legível.</p>
             </article>
         </section>
         <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="valide-suas-requisicoes-do-jeito-certo">
