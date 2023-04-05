@@ -47,80 +47,137 @@
                 </ul>
             </article>
         </section>
-        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-3 text-left" data-card-name="sua-responsabilidade-e-uma-so">
+        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="sua-responsabilidade-e-uma-so">
             <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Sua responsabilidade é uma só<span
                 class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
-            <article class="details pl-3 mt-2 hidden" role="contentinfo">
-                <p>logo mais</p>
+            <article class="details pl-3 mt-5 text-lg hidden" role="contentinfo">
+                <p>Já ouviu aquele ditado: <i>“Quem faz tudo, não faz nada bem feito”</i>?</p>
+                <p>Pois é, o famoso <strong>Princípio de Responsabilidade Única</strong> trata justamente disso. Suas classes e funções devem ter uma única responsabilidade. Ao fazer isso, a escrita de testes fica mais fácil, e o processo de “debugação” também.</p>
+                <h4 class="text-xl my-3 font-bold">Isso aqui é ruim</h4>
+<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+protected function fullClientName(): Attribute
+{
+    if (auth()->user() && auth()->user()->hasRole('client') && auth()->user()->isVerified()) {
+        return new Attribute(
+            get: fn ($value, $attributes) => "Sr. $attributes['first_name'] $attributes['middle_name'] $attributes['last_name']",
+        );
+    } else {
+        return new Attribute(
+            get: fn ($value, $attributes) => "$attributes['first_name'] $attributes['last_name']",
+        );
+    }
+}
+</pre>
+                <p>Os problemas do código acima são:</p>
+                <ul class="list-disc pl-6">
+                    <li>Muito verboso. Parece bagunçado; e</li>
+                    <li>Em uma breve leitura você percebe que ele valida se o usuário está “logado”, se seu papel é <i>client</i> e se ele está verificado. O que não tem nada haver com o nome do cliente;</li>
+                </ul>
+                <p>À partir do momento em que o código faz mais do que apenas retornar o nome do usuário (que é o que diz o nome da função), o código esconde de quem o chama, regras de negócio que não tem nada haver com o que o consumidor da função (uma outra classe por exemplo) espera. Na verdade, isso afetaria até a escrita de testes unitários, uma vez que a estratégia de definição de como será retornado o nome está escondida dentro da função.</p>
+                <h4 class="text-xl my-3 font-bold">Como melhorar isso?</h4>
+<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+protected function fullClientName() : Attribute
+{
+    return new Attribute(
+            get: fn ($value, $attributes) => "Sr. $attributes['first_name'] $attributes['middle_name'] $attributes['last_name']",
+        );
+}
+
+protected function shortClientName() : Attribute
+{
+    return new Attribute(
+            get: fn ($value, $attributes) => "$attributes['first_name'] $attributes['last_name']",
+        );
+}
+
+public function isTheLoggedUserAVerifiedClient()
+{
+    return  auth()->user() && 
+            auth()->user()->hasRole('client') && 
+            auth()->user()->isVerified()	
+}
+
+public function getUserData() 
+{
+    // Essa seria uma função qualquer que consumiria as demais
+    $name = $user->isTheLoggedUserAVerifiedClient() 
+                ? $user->full_client_name 
+                : $user->short_client_name;
+
+    return new UserDTO($name, ...);
+}
+</pre>
+                <p>Veja que nessa segunda abordagem, é retornado exatamente o valor que a função <i>getUserData</i> espera quando pede pelo nome longo do cliente (<i>full_client_name</i>), ou a versão curta dele (<i>short_client_name</i>). É a função chamadora quem define se quer exibir o nome curto, ou completo. Dessa forma, nenhuma regra de negócio fica oculta dentro de um método que só deveria retornar um nome na versão longa, ou curta.</p>
+                <p>Uma dica é sempre usar nomes descritivos, que realmente digam o que a função/classe faz. Desse jeito, se você notar que o nome atribuído começa a ficar longo e dizer que faz mais do que o que você pensa que ela deveria fazer, isso é sintoma de que o código em questão está ferindo o <strong>Princípio de Responsabilidade Única</strong>.</p>
             </article>
         </section>
-        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-3 text-left" data-card-name="controllers-devem-ser-finas">
+        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="controllers-devem-ser-finas">
             <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Controllers devem ser "finas"<span
                 class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
-            <article class="details pl-3 mt-2 hidden" role="contentinfo">
+            <article class="details pl-3 mt-5 text-lg hidden" role="contentinfo">
                 <p>logo mais</p>
             </article>
         </section>
-        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-3 text-left" data-card-name="valide-suas-requisicoes-do-jeito-certo">
+        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="valide-suas-requisicoes-do-jeito-certo">
             <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Valide suas requisições do jeito certo<span
                 class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
-            <article class="details pl-3 mt-2 hidden" role="contentinfo">
+            <article class="details pl-3 mt-5 text-lg hidden" role="contentinfo">
                 <p>logo mais</p>
             </article>
         </section>
-        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-3 text-left" data-card-name="ja-diziam-os-menudos-nao-se-repita">
+        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="ja-diziam-os-menudos-nao-se-repita">
             <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Já diziam os Menudos: "Não se repita"<span
                 class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
-            <article class="details pl-3 mt-2 hidden" role="contentinfo">
+            <article class="details pl-3 mt-5 text-lg hidden" role="contentinfo">
                 <p>logo mais</p>
             </article>
         </section>
-        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-3 text-left" data-card-name="coloque-um-nome-decente">
+        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="coloque-um-nome-decente">
             <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Coloque um nome decente!<span
                 class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
-            <article class="details pl-3 mt-2 hidden" role="contentinfo">
+            <article class="details pl-3 mt-5 text-lg hidden" role="contentinfo">
                 <p>logo mais</p>
             </article>
         </section>
-        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-3 text-left" data-card-name="nao-acesse-variaveis-de-ambiente-diretamento-pelo-env">
+        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="nao-acesse-variaveis-de-ambiente-diretamento-pelo-env">
             <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Não acesse variáveis de ambiente diretamente pelo .env<span
                 class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
-            <article class="details pl-3 mt-2 hidden" role="contentinfo">
+            <article class="details pl-3 mt-5 text-lg hidden" role="contentinfo">
                 <p>logo mais</p>
             </article>
         </section>
-        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-3 text-left" data-card-name="nao-acabe-com-a-memoria-use-chunk">
+        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="nao-acabe-com-a-memoria-use-chunk">
             <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Não acabe com a memória! Use chunk<span
                 class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
-            <article class="details pl-3 mt-2 hidden" role="contentinfo">
+            <article class="details pl-3 mt-5 text-lg hidden" role="contentinfo">
                 <p>logo mais</p>
             </article>
         </section>
-        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-3 text-left" data-card-name="seja-esperto-use-acessors-e-mutators">
+        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="seja-esperto-use-acessors-e-mutators">
             <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Seja esperto! Use acessors e mutators<span
                 class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
-            <article class="details pl-3 mt-2 hidden" role="contentinfo">
+            <article class="details pl-3 mt-5 text-lg hidden" role="contentinfo">
                 <p>logo mais</p>
             </article>
         </section>
-        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-3 text-left" data-card-name="um-blade-sem-consultas-por-favor">
+        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="um-blade-sem-consultas-por-favor">
             <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Um Blade sem consultas, por favor<span
                 class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
-            <article class="details pl-3 mt-2 hidden" role="contentinfo">
+            <article class="details pl-3 mt-5 text-lg hidden" role="contentinfo">
                 <p>logo mais</p>
             </article>
         </section>
-        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-3 text-left" data-card-name="use-atribuicao-em-massa">
+        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="use-atribuicao-em-massa">
             <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Use atribuição em massa<span
                 class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
-            <article class="details pl-3 mt-2 hidden" role="contentinfo">
+            <article class="details pl-3 mt-5 text-lg hidden" role="contentinfo">
                 <p>logo mais</p>
             </article>
         </section>
-        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-3 text-left" data-card-name="use-atribuicao-em-massa">
+        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="use-atribuicao-em-massa">
             <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Referências<span
                 class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
-            <article class="details pl-6 mt-2 hidden" role="contentinfo">
+            <article class="details pl-6 mt-5 text-lg hidden" role="contentinfo">
                 <ul class="list-disc">
                     <li><a href="https://laravel.com/docs/9.x/installation">Documentação oficial do Laravel</a></li>
                     <li><a href="https://github.com/jonaselan/laravel-best-practices">Laravel best practices</a></li>
