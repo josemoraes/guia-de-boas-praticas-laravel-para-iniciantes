@@ -248,7 +248,7 @@ public function getArticles()
         <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="coloque-um-nome-decente">
             <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Coloque um nome decente!<span
                 class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
-            <article class="details pl-3 mt-5 text-lg" role="contentinfo">
+            <article class="details pl-3 mt-5 text-lg hidden" role="contentinfo">
                 <p>Isso aqui vem direto dos ensinamentos do Uncle Bob (Robert C. Martin). Use sempre nomes expressivos em variáveis, funções, classes, constantes, e assim por diante.</p>
                 <p>Nomes expressivos vão tornar seu código óbvio e simples de ser lido. E no mundo do código, ser simples é coisa fina. Por exemplo:</p>
                 <h4 class="text-xl my-3 font-bold">Isso aqui é ruim</h4>
@@ -445,14 +445,54 @@ if ($this->hasJoins())
             <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Não acesse variáveis de ambiente diretamente pelo .env<span
                 class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
             <article class="details pl-3 mt-5 text-lg hidden" role="contentinfo">
-                <p>logo mais</p>
+                <p>Você deve estar se perguntando o porquê não pode simplesmente usar o helper <strong>env</strong> diretamente. Isso está ligado à estratégia de caching que o Laravel usa para otimizar o acesso a recursos. Uma vez que as configurações foram armazenadas em cache, o helper <strong>env</strong> não retornará nada além de <i>null</i>. Por isso a recomendação de configurar o acesso à variáveis de ambiente por meio do arquivo de configuração.</p>
+                <h4 class="text-xl my-3 font-bold">Isso aqui é ruim</h4>
+<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+$apiKey = env('API_KEY');
+</pre>
+                <h4 class="text-xl my-3 font-bold">Como melhorar isso?</h4>
+<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+// No arquivo de configuração: config/api.php
+'key' => env('API_KEY'),
+
+// Acessando o valor
+$apiKey = config('api.key');
+</pre>
+                <p>Ainda adiciono que configurar variáveis de ambiente em arquivos de configuração, permitirá um acesso mais legível à informação, e você poderá ter configurações de natureza diferentes, organizadas em domínios mais semânticos, como no caso acima, em que todas as informações relacionadas à API estarão em um arquivo específico de configurações de API.</p>          
             </article>
         </section>
         <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="nao-acabe-com-a-memoria-use-chunk">
             <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Não acabe com a memória! Use chunk<span
                 class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
             <article class="details pl-3 mt-5 text-lg hidden" role="contentinfo">
-                <p>logo mais</p>
+                <p>Se você é iniciante na área, talvez não tenha se deparado com tarefas que exigiam implementações que precisassem realizar processamentos em grandes volumes de informações, ou certamente, se nasceu nos anos 2000, talvez nunca tenha desenvolvido algo e se preocupado com quanta memória uma operação está consumindo.</p>
+                <p>Isso não é ruim não. Ainda bem que hoje nossa preocupação hoje em dia seja mais com design de arquitetura e capacidade de manutenção do que detalhes de mais baixo nível (isso em âmbito geral), se bem que performance e escalabilidade ainda são assuntos relevantes e sempre terão seu espaço nas discussões dos profissionais da área.</p>
+                <p>Meu ponto aqui é te dizer que com Laravel, quando tu precisar executar uma operação em grandes volumes, cuidado, pois:</p>
+                <h4 class="text-xl my-3 font-bold">Isso aqui é ruim</h4>
+<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+$users = User::where('active', 1)->get(); // Suponha que há 10 mil usuários
+
+$users->each(function($user){
+    // Envie um e-mail
+});
+</pre>
+                <h4 class="text-xl my-3 font-bold">Como melhorar isso?</h4>
+<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+User::where('active', 1)
+->chunkById(200, function ($users) {
+    $users->each(function($user){
+                // Envie um e-mail
+            });
+}, $column = 'id');
+</pre>
+                <p>Veja que na função acima, é invocada uma função chamada <strong>chunkById</strong> que recebe como parâmetros: O número de resultados recuperados por iteração; e um callback para processar os resultados.</p>
+                <p>Isso vai permitir consumir menos memória do que executar um eager loading retornando todos os itens da tabela como na primeira opção, uma vez que a execução será executada em lotes de <strong>200 resultados por consulta</strong>, conforme o exemplo apresentado.</p>
+                <p>Se você pesquisar na documentação oficial verá que há ainda uma função <strong>chunk</strong> que pode ser usada. Não a utilizei no exemplo acima, porque como realizei um filtro na consulta, a função <strong>chunkById</strong> realiza um trabalho melhor, uma vez que usa a coluna ID para identificar o último item retornado na consulta anterior e em ordem crescente será o ponto de partida da próxima consulta.</p>
+                <p>De quebra, ainda usei a função <strong>each</strong> que possui uma legibilidade melhor que escrever uma declaração <strong>foreach</strong>, embora isso tenha haver apenas com legibilidade e não com performance, ou algo dessa natureza.</p>
+                <p>E para fechar, certamente se você é alguém com um conhecimento um pouco mais avançado, deve estar se perguntando: <i>“Por que ele não falou que os resultados poderiam ser executados em uma fila?”</i>. E sim, poderiam, isso faria sentido na execução do comando (enviar o e-mail, conforme proposto no exemplo). Você pode configurar uma fila de envio de e-mails e ao invés de realizar a operação de envio de forma síncrona, um por um, você pode enfileirar as operações para que aconteçam de forma assíncrona.</p>
+                <blockquote class="border-l-4 border-red-400 bg-gray-200 my-2 p-3 italic">
+                    Pesquise na documentação do Laravel as funções: <strong>lazy</strong> e <strong>lazyById</strong> , pois elas internamente usam a mesma estratégia de <strong>chunk</strong>, porém retornam uma <strong>LazyCollection</strong> que te permite interagir com os resultados individualmente. Por exemplo: <strong>foreach (User::lazy() as $user) { ... }</strong>
+                </blockquote>
             </article>
         </section>
         <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="seja-esperto-use-acessors-e-mutators">
