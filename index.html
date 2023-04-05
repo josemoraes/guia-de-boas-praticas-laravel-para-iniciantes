@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guia de Boas Práticas - Laravel</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GFD5NFN3HV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-GFD5NFN3HV');
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,6 +26,7 @@
         }
     </style>
 </head>
+
 <body class="py-10 bg-gray-100 flex flex-col items-center justify-center">
     <header class="w-8/12">
         <h1 class="text-5xl font-bold text-red-500">Guia de Boas Práticas com Laravel</h1>
@@ -26,35 +36,58 @@
         <section class="my-10">
             <article class="text-lg leading-relaxed">
                 <p>Olá, Dev!</p>
-                <p>Suponho que você seja um iniciante na área de programação. Logo, me arrisco a dizer que na maior parte do tempo em que você está dedicado à aprender mais sobre a área, está sempre à procura de qual a nova tendência, ferramenta, ou tecnologia precisa aprender para conseguir se destacar.</p>
+                <p>Suponho que você seja um iniciante na área de programação. Logo, me arrisco a dizer que na maior
+                    parte do tempo em que você está dedicado à aprender mais sobre a área, está sempre à procura de qual
+                    a nova tendência, ferramenta, ou tecnologia precisa aprender para conseguir se destacar.</p>
                 <p>E se te disser que isso é besteira?</p>
-                <p>Com o passar dos anos, a experiência e a exposição à ambientes desafiadores te mostram que os fundamentos são muito mais importantes que qualquer nova tendência atual.</p>
-                <p>Manter um software é muito mais trabalhoso, do que criar um do zero. Talvez seja por isso, que tenho certeza que já deve ter ouvido, ou dito algo parecido com: </p>
-                <blockquote class="border-l-4 border-red-400 bg-gray-200 my-2 p-3 italic">“E se a gente refizesse isso com <strong>[coloque aqui qual a tecnologia da moda]</strong>?”</blockquote>
-                <p>No que Eu acredito? Que software bom, é aquele que é usado. Tecnologia boa é qualquer uma que resolve o seu problema, aliás, o que é uma linguagem, ou framework senão mais uma ferramenta no que deveria ser a sua caixa de ferramentas? </p>
-                <blockquote class="border-l-4 border-red-400 bg-gray-200 my-2 p-3 italic">Acredito que o bom código é aquele que possui uma leitura e entendimento simples e óbvio. Que permita uma fácil manutenção e evolução.</blockquote>
-                <p>Por isso, esse material será focado em ajudar você, desenvolvedor Laravel, a parar de buscar alternativas em outras linguagens, ou frameworks, sem antes ter explorado o que o Laravel tem de melhor a te oferecer. Construindo softwares com alta manutenabilidade e extensibilidade.</p>
-                <p>Portanto, o conteúdo que você vai encontrar aqui será claro e direto. Você deverá usá-lo como mais uma ferramenta no seu arsenal. Sendo assim, você pode acessar diretamente as seções de interesse, sem ter que ler as anteriores.</p>
-                <p>Meu objetivo é que Você seja visto como um excelente profissional, que aplica boas práticas e escreve um código com alto nível de manutenabilidade.</p>
+                <p>Com o passar dos anos, a experiência e a exposição à ambientes desafiadores te mostram que os
+                    fundamentos são muito mais importantes que qualquer nova tendência atual.</p>
+                <p>Manter um software é muito mais trabalhoso, do que criar um do zero. Talvez seja por isso, que tenho
+                    certeza que já deve ter ouvido, ou dito algo parecido com: </p>
+                <blockquote class="border-l-4 border-red-400 bg-gray-200 my-2 p-3 italic">“E se a gente refizesse isso
+                    com <strong>[coloque aqui qual a tecnologia da moda]</strong>?”</blockquote>
+                <p>No que Eu acredito? Que software bom, é aquele que é usado. Tecnologia boa é qualquer uma que resolve
+                    o seu problema, aliás, o que é uma linguagem, ou framework senão mais uma ferramenta no que deveria
+                    ser a sua caixa de ferramentas? </p>
+                <blockquote class="border-l-4 border-red-400 bg-gray-200 my-2 p-3 italic">Acredito que o bom código é
+                    aquele que possui uma leitura e entendimento simples e óbvio. Que permita uma fácil manutenção e
+                    evolução.</blockquote>
+                <p>Por isso, esse material será focado em ajudar você, desenvolvedor Laravel, a parar de buscar
+                    alternativas em outras linguagens, ou frameworks, sem antes ter explorado o que o Laravel tem de
+                    melhor a te oferecer. Construindo softwares com alta manutenabilidade e extensibilidade.</p>
+                <p>Portanto, o conteúdo que você vai encontrar aqui será claro e direto. Você deverá usá-lo como mais
+                    uma ferramenta no seu arsenal. Sendo assim, você pode acessar diretamente as seções de interesse,
+                    sem ter que ler as anteriores.</p>
+                <p>Meu objetivo é que Você seja visto como um excelente profissional, que aplica boas práticas e escreve
+                    um código com alto nível de manutenabilidade.</p>
             </article>
             <article class="border-l-4 border-red-400 bg-gray-200 my-2 p-3 leading-relaxed">
                 <h3 class="text-xl font-bold">Quem criou essa página?</h3>
                 <p>Olá, me chamo José Moraes e já atuo na área de software há alguns anos.</p>
-                <p>Caso tenha interesse em saber mais sobre mim, recomendo se conectar comigo pelo LinkedIn e visitar meu Github</p>
+                <p>Caso tenha interesse em saber mais sobre mim, recomendo se conectar comigo pelo LinkedIn e visitar
+                    meu Github</p>
                 <ul class="mt-3 flex flex-row">
-                    <li><a href="https://www.linkedin.com/in/josecarlosfilho/" class="bg-blue-600 px-3 py-2 border-2 border-blue-500 rounded text-white font-bold mr-3 block w-28 text-center">LinkedIn</a></li>
-                    <li><a href="https://github.com/josemoraes" class="bg-black px-3 py-2 border-2 border-gray-800 rounded text-white font-bold block w-28 text-center">Github</a></li>
+                    <li><a href="https://www.linkedin.com/in/josecarlosfilho/"
+                            class="bg-blue-600 px-3 py-2 border-2 border-blue-500 rounded text-white font-bold mr-3 block w-28 text-center">LinkedIn</a>
+                    </li>
+                    <li><a href="https://github.com/josemoraes"
+                            class="bg-black px-3 py-2 border-2 border-gray-800 rounded text-white font-bold block w-28 text-center">Github</a>
+                    </li>
                 </ul>
             </article>
         </section>
-        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="sua-responsabilidade-e-uma-so">
-            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Sua responsabilidade é uma só<span
-                class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
+        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left"
+            data-card-name="sua-responsabilidade-e-uma-so">
+            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Sua
+                responsabilidade é uma só<span class="show-details text-gray-500 text-lg" role="button">exibir</span>
+            </h3>
             <article class="details pl-3 mt-5 text-lg hidden" role="contentinfo">
                 <p>Já ouviu aquele ditado: <i>“Quem faz tudo, não faz nada bem feito”</i>?</p>
-                <p>Pois é, o famoso <strong>Princípio de Responsabilidade Única</strong> trata justamente disso. Suas classes e funções devem ter uma única responsabilidade. Ao fazer isso, a escrita de testes fica mais fácil, e o processo de “debugação” também.</p>
+                <p>Pois é, o famoso <strong>Princípio de Responsabilidade Única</strong> trata justamente disso. Suas
+                    classes e funções devem ter uma única responsabilidade. Ao fazer isso, a escrita de testes fica mais
+                    fácil, e o processo de “debugação” também.</p>
                 <h4 class="text-xl my-3 font-bold">Isso aqui é ruim</h4>
-<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+                <pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
 protected function fullClientName(): Attribute
 {
     if (auth()->user() && auth()->user()->hasRole('client') && auth()->user()->isVerified()) {
@@ -71,11 +104,16 @@ protected function fullClientName(): Attribute
                 <p>Os problemas do código acima são:</p>
                 <ul class="list-disc pl-6">
                     <li>Muito verboso. Parece bagunçado; e</li>
-                    <li>Em uma breve leitura você percebe que ele valida se o usuário está “logado”, se seu papel é <i>client</i> e se ele está verificado. O que não tem nada haver com o nome do cliente;</li>
+                    <li>Em uma breve leitura você percebe que ele valida se o usuário está “logado”, se seu papel é
+                        <i>client</i> e se ele está verificado. O que não tem nada haver com o nome do cliente;</li>
                 </ul>
-                <p>À partir do momento em que o código faz mais do que apenas retornar o nome do usuário (que é o que diz o nome da função), o código esconde de quem o chama, regras de negócio que não tem nada haver com o que o consumidor da função (uma outra classe por exemplo) espera. Na verdade, isso afetaria até a escrita de testes unitários, uma vez que a estratégia de definição de como será retornado o nome está escondida dentro da função.</p>
+                <p>À partir do momento em que o código faz mais do que apenas retornar o nome do usuário (que é o que
+                    diz o nome da função), o código esconde de quem o chama, regras de negócio que não tem nada haver
+                    com o que o consumidor da função (uma outra classe por exemplo) espera. Na verdade, isso afetaria
+                    até a escrita de testes unitários, uma vez que a estratégia de definição de como será retornado o
+                    nome está escondida dentro da função.</p>
                 <h4 class="text-xl my-3 font-bold">Como melhorar isso?</h4>
-<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+                <pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
 protected function fullClientName() : Attribute
 {
     return new Attribute(
@@ -107,19 +145,30 @@ public function getUserData()
     return new UserDTO($name, ...);
 }
 </pre>
-                <p>Veja que nessa segunda abordagem, é retornado exatamente o valor que a função <i>getUserData</i> espera quando pede pelo nome longo do cliente (<i>full_client_name</i>), ou a versão curta dele (<i>short_client_name</i>). É a função chamadora quem define se quer exibir o nome curto, ou completo. Dessa forma, nenhuma regra de negócio fica oculta dentro de um método que só deveria retornar um nome na versão longa, ou curta.</p>
-                <p>Uma dica é sempre usar nomes descritivos, que realmente digam o que a função/classe faz. Desse jeito, se você notar que o nome atribuído começa a ficar longo e dizer que faz mais do que o que você pensa que ela deveria fazer, isso é sintoma de que o código em questão está ferindo o <strong>Princípio de Responsabilidade Única</strong>.</p>
+                <p>Veja que nessa segunda abordagem, é retornado exatamente o valor que a função <i>getUserData</i>
+                    espera quando pede pelo nome longo do cliente (<i>full_client_name</i>), ou a versão curta dele
+                    (<i>short_client_name</i>). É a função chamadora quem define se quer exibir o nome curto, ou
+                    completo. Dessa forma, nenhuma regra de negócio fica oculta dentro de um método que só deveria
+                    retornar um nome na versão longa, ou curta.</p>
+                <p>Uma dica é sempre usar nomes descritivos, que realmente digam o que a função/classe faz. Desse jeito,
+                    se você notar que o nome atribuído começa a ficar longo e dizer que faz mais do que o que você pensa
+                    que ela deveria fazer, isso é sintoma de que o código em questão está ferindo o <strong>Princípio de
+                        Responsabilidade Única</strong>.</p>
             </article>
         </section>
-        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="controllers-devem-ser-finas">
-            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Controllers devem ser "finas"<span
-                class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
+        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left"
+            data-card-name="controllers-devem-ser-finas">
+            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">
+                Controllers devem ser "finas"<span class="show-details text-gray-500 text-lg"
+                    role="button">exibir</span></h3>
             <article class="details pl-3 mt-5 text-lg hidden" role="contentinfo">
                 <p>Existe uma expressão na comunidade Laravel que diz (em tradução livre):</p>
-                <blockquote class="border-l-4 border-red-400 bg-gray-200 my-2 p-3 italic">Tenha models “gordos” e controllers “finos”</blockquote>
-                <p>Na prática, isso quer dizer que você não deve ter regras de negócio, nem consultas de banco nas suas controllers.</p>
+                <blockquote class="border-l-4 border-red-400 bg-gray-200 my-2 p-3 italic">Tenha models “gordos” e
+                    controllers “finos”</blockquote>
+                <p>Na prática, isso quer dizer que você não deve ter regras de negócio, nem consultas de banco nas suas
+                    controllers.</p>
                 <h4 class="text-xl my-3 font-bold">Isso aqui é ruim</h4>
-<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+                <pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
 public function index()
 {
     $users = User::verified()
@@ -131,9 +180,11 @@ public function index()
     return view('index', ['users' => $users]);
 }
 </pre>
-                <p>Veja que toda a definição de consulta está definida na controller. Isso é péssimo, pois cruza as fronteiras de responsabilidade de uma controller, que deve apenas direcionar a model/regra de negócio que será entregue para a camada de apresentação.</p>
+                <p>Veja que toda a definição de consulta está definida na controller. Isso é péssimo, pois cruza as
+                    fronteiras de responsabilidade de uma controller, que deve apenas direcionar a model/regra de
+                    negócio que será entregue para a camada de apresentação.</p>
                 <h4 class="text-xl my-3 font-bold">Como melhorar isso?</h4>
-<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+                <pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
 // Na Controller
 public function index()
 {
@@ -153,17 +204,21 @@ class Client extends Model
     }
 }
 </pre>
-                <p>Perceba que agora a controller apenas indica que os usuários a serem apresentados devem possuir os <i>posts</i> mais recentes, sem se importar como isso é feito na model.</p>
+                <p>Perceba que agora a controller apenas indica que os usuários a serem apresentados devem possuir os
+                    <i>posts</i> mais recentes, sem se importar como isso é feito na model.</p>
                 <p>Isso vai manter seu código muito mais organizado e legível.</p>
             </article>
         </section>
-        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="valide-suas-requisicoes-do-jeito-certo">
-            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Valide suas requisições do jeito certo<span
-                class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
+        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left"
+            data-card-name="valide-suas-requisicoes-do-jeito-certo">
+            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Valide
+                suas requisições do jeito certo<span class="show-details text-gray-500 text-lg"
+                    role="button">exibir</span></h3>
             <article class="details pl-3 mt-5 text-lg hidden" role="contentinfo">
-                <p>Se você estiver validando as requisições diretamente na controller, pare agora mesmo. Lembre-se: <i>“Controllers sempre finas”</i>. Portanto:</p>
+                <p>Se você estiver validando as requisições diretamente na controller, pare agora mesmo. Lembre-se:
+                    <i>“Controllers sempre finas”</i>. Portanto:</p>
                 <h4 class="text-xl my-3 font-bold">Isso aqui é ruim</h4>
-<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+                <pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
 public function store(Request $request)
 {
     $request->validate([
@@ -173,9 +228,10 @@ public function store(Request $request)
     ...
 }
 </pre>
-            <p>A classe <i>Request</i> pode ser estendida e customizada para que contenha as validações que deseja fazer.</p>
-            <h4 class="text-xl my-3 font-bold">Como melhorar isso?</h4>
-<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+                <p>A classe <i>Request</i> pode ser estendida e customizada para que contenha as validações que deseja
+                    fazer.</p>
+                <h4 class="text-xl my-3 font-bold">Como melhorar isso?</h4>
+                <pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
 // Crie a classe para extender Request e tratar as validações
 class ProductRequest extends Request
 {
@@ -195,19 +251,27 @@ public function store(ProductRequest $request)
 }
 </pre>
                 <p>Agora sim 😃</p>
-                <p>Veja que as regras agora são definidas dentro da função <i>rules</i> da classe <i>ProductRequest</i> e o próprio middleware as executa antes de passar a requisição para a controller em si. Se alguma regra for ferida, o middleware disparará uma exceção.</p>
+                <p>Veja que as regras agora são definidas dentro da função <i>rules</i> da classe <i>ProductRequest</i>
+                    e o próprio middleware as executa antes de passar a requisição para a controller em si. Se alguma
+                    regra for ferida, o middleware disparará uma exceção.</p>
             </article>
         </section>
-        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="ja-diziam-os-menudos-nao-se-repita">
-            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Já diziam os Menudos: "Não se repita"<span
-                class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
+        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left"
+            data-card-name="ja-diziam-os-menudos-nao-se-repita">
+            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Já
+                diziam os Menudos: "Não se repita"<span class="show-details text-gray-500 text-lg"
+                    role="button">exibir</span></h3>
             <article class="details pl-3 mt-5 text-lg hidden" role="contentinfo">
-                <p>Tenho certeza que essa música vai ficar na sua cabeça pelo resto do seu dia: <i>“Não se repita, não se repita (…)”</i>.</p>
-                <p>O conceito de DRY (Dont Repeat Yourself - Não se Repita) parece óbvio, aliás, quem gosta de escrever o mesmo código em vários lugares diferentes, sem reaproveitar nada? 🤨</p>
-                <p>Desculpa estragar seu sorrisinho de canto de boca, mas <strong>CTRL + C</strong> e <strong>CTRL + V</strong> não é bem reaproveitamento de código no conceito DRY.</p>
-                <p>A verdade é que <i>“Não se Repetir”</i> aqui é abstrair alguma lógica em um escopo com fronteiras bem definidas e acessar esse escopo por uma instância dele. Veja:</p>
+                <p>Tenho certeza que essa música vai ficar na sua cabeça pelo resto do seu dia: <i>“Não se repita, não
+                        se repita (…)”</i>.</p>
+                <p>O conceito de DRY (Dont Repeat Yourself - Não se Repita) parece óbvio, aliás, quem gosta de escrever
+                    o mesmo código em vários lugares diferentes, sem reaproveitar nada? 🤨</p>
+                <p>Desculpa estragar seu sorrisinho de canto de boca, mas <strong>CTRL + C</strong> e <strong>CTRL +
+                        V</strong> não é bem reaproveitamento de código no conceito DRY.</p>
+                <p>A verdade é que <i>“Não se Repetir”</i> aqui é abstrair alguma lógica em um escopo com fronteiras bem
+                    definidas e acessar esse escopo por uma instância dele. Veja:</p>
                 <h4 class="text-xl my-3 font-bold">Isso aqui é ruim</h4>
-<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+                <pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
 public function getActive()
 {
     return $this->where('verified', 1)->get();
@@ -222,7 +286,7 @@ public function getPosts()
 </pre>
                 <p>Veja que nas duas funções, é feita uma query para verificar se o usuário foi verificado.</p>
                 <h4 class="text-xl my-3 font-bold">Como melhorar isso?</h4>
-<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+                <pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
 public function scopeVerified($q)
 {
     return $q->where('verified', 1);
@@ -240,26 +304,35 @@ public function getArticles()
         })->get();
 }
 </pre>
-                <p>Veja que aqui, usei o conceito de query scopes (escopos de consulta) do Eloquent ORM usado pelo Laravel, e abstraí a lógica de consulta que aplica o filtro de usuário verificado e apenas reaproveitei o uso do escopo nas demais funções.</p>
-                <p>Vale lembrar que aqui só usei o conceito de query scopes, para aproveitar a oportunidade de mostrar como eles funcionam e explicar o conceito ao mesmo tempo, porém, o conceito de DRY deve ser aplicado toda vez que você perceber que um mesmo trecho de código está sendo usado em outros lugares. Se você estiver fazendo muito <strong>CTRL + C</strong> e <strong>CTRL + V</strong> de um trecho de código, certamente é uma oportunidade clara de aplicar o DRY.</p>
+                <p>Veja que aqui, usei o conceito de query scopes (escopos de consulta) do Eloquent ORM usado pelo
+                    Laravel, e abstraí a lógica de consulta que aplica o filtro de usuário verificado e apenas
+                    reaproveitei o uso do escopo nas demais funções.</p>
+                <p>Vale lembrar que aqui só usei o conceito de query scopes, para aproveitar a oportunidade de mostrar
+                    como eles funcionam e explicar o conceito ao mesmo tempo, porém, o conceito de DRY deve ser aplicado
+                    toda vez que você perceber que um mesmo trecho de código está sendo usado em outros lugares. Se você
+                    estiver fazendo muito <strong>CTRL + C</strong> e <strong>CTRL + V</strong> de um trecho de código,
+                    certamente é uma oportunidade clara de aplicar o DRY.</p>
                 <p>Fique sempre atento e refatore quando necessário.</p>
             </article>
         </section>
-        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="coloque-um-nome-decente">
-            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Coloque um nome decente!<span
-                class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
+        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left"
+            data-card-name="coloque-um-nome-decente">
+            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Coloque
+                um nome decente!<span class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
             <article class="details pl-3 mt-5 text-lg hidden" role="contentinfo">
-                <p>Isso aqui vem direto dos ensinamentos do Uncle Bob (Robert C. Martin). Use sempre nomes expressivos em variáveis, funções, classes, constantes, e assim por diante.</p>
-                <p>Nomes expressivos vão tornar seu código óbvio e simples de ser lido. E no mundo do código, ser simples é coisa fina. Por exemplo:</p>
+                <p>Isso aqui vem direto dos ensinamentos do Uncle Bob (Robert C. Martin). Use sempre nomes expressivos
+                    em variáveis, funções, classes, constantes, e assim por diante.</p>
+                <p>Nomes expressivos vão tornar seu código óbvio e simples de ser lido. E no mundo do código, ser
+                    simples é coisa fina. Por exemplo:</p>
                 <h4 class="text-xl my-3 font-bold">Isso aqui é ruim</h4>
-<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+                <pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
 if (count((array) $b->getQuery()->joins) > 0)
 {
     ...
 }
 </pre>
                 <h4 class="text-xl my-3 font-bold">Isso aqui é pior</h4>
-<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+                <pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
 // Verifica se a query possui joins
 if (count((array) $b->getQuery()->joins) > 0)
 {
@@ -267,22 +340,32 @@ if (count((array) $b->getQuery()->joins) > 0)
 }
 </pre>
                 <p>Por que é pior? Você deve estar se perguntando, afinal, você está dizendo o que o código faz.</p>
-                <p>É que comentários em códigos, podem esconder detalhes e ao longo do tempo, se essa declaração for modificada, será que a pessoa que a modificou se dará o trabalho de alterar o comentário? Nos meus anos de prática nunca vi isso acontecer (talvez seja a bolha né?).</p>
+                <p>É que comentários em códigos, podem esconder detalhes e ao longo do tempo, se essa declaração for
+                    modificada, será que a pessoa que a modificou se dará o trabalho de alterar o comentário? Nos meus
+                    anos de prática nunca vi isso acontecer (talvez seja a bolha né?).</p>
                 <h4 class="text-xl my-3 font-bold">Como melhorar isso?</h4>
-<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+                <pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
 if ($this->hasJoins()) 
 {
     ...
 }
 </pre>
-                <p>Viu como a declaração fica tão óbvia ao ponto de ser bobo? Não precisei de nenhum comentário explicando o que significa a declaração. O própria nome já diz: <strong>hasJoins</strong> (<strong>possuiLigacoes</strong> - em tradução livre).</p>
-                <p>Pare hoje de colocar nome de variável como <i>x</i> ou <i>t</i>. Veja seu código como um filho seu e coloque bons nomes (a não ser que tu seja o Elon Musk. Se for, ignore o comentário anterior).</p>
-                <p>Ainda sobre este tópico vale ressaltar que o framework Laravel possui uma convenção de nomes que recomendo ser respeitada. Ela não é obrigatória, mas seu uso potencializará as comodidades que o framework oferece como: Geração de códigos usando o artisan cli; Acesso à recursos sem a necessidade de configurações extras; e o mais importante, um padrão de escrita que se respeitado, beneficiará toda a equipe no longo prazo, reduzindo a curva de aprendizagem e acelerando a geração de valor.</p>
+                <p>Viu como a declaração fica tão óbvia ao ponto de ser bobo? Não precisei de nenhum comentário
+                    explicando o que significa a declaração. O própria nome já diz: <strong>hasJoins</strong>
+                    (<strong>possuiLigacoes</strong> - em tradução livre).</p>
+                <p>Pare hoje de colocar nome de variável como <i>x</i> ou <i>t</i>. Veja seu código como um filho seu e
+                    coloque bons nomes (a não ser que tu seja o Elon Musk. Se for, ignore o comentário anterior).</p>
+                <p>Ainda sobre este tópico vale ressaltar que o framework Laravel possui uma convenção de nomes que
+                    recomendo ser respeitada. Ela não é obrigatória, mas seu uso potencializará as comodidades que o
+                    framework oferece como: Geração de códigos usando o artisan cli; Acesso à recursos sem a necessidade
+                    de configurações extras; e o mais importante, um padrão de escrita que se respeitado, beneficiará
+                    toda a equipe no longo prazo, reduzindo a curva de aprendizagem e acelerando a geração de valor.</p>
                 <table class="border-collapse border border-slate-400 mt-5">
                     <thead class="border border-slate-300">
                         <tr>
                             <th class="border border-slate-300 p-3">
-                                <strong>Recurso</strong></th>
+                                <strong>Recurso</strong>
+                            </th>
                             <th class="border border-slate-300 p-3"><strong>Qual a
                                     convenção?</strong></th>
                             <th class="border border-slate-300 p-3"><strong>Isso aqui é
@@ -348,7 +431,8 @@ if ($this->hasJoins())
                         </tr>
                         <tr>
                             <td class="border border-slate-300 p-3">Tabela Pivot</td>
-                            <td class="border border-slate-300 p-3">nomes das models no singular e em ordem alfabética</td>
+                            <td class="border border-slate-300 p-3">nomes das models no singular e em ordem alfabética
+                            </td>
                             <td class="border border-slate-300 p-3">user_article, articles_users</td>
                             <td class="border border-slate-300 p-3">article_user</td>
                         </tr>
@@ -441,35 +525,53 @@ if ($this->hasJoins())
                 </table>
             </article>
         </section>
-        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="nao-acesse-variaveis-de-ambiente-diretamento-pelo-env">
-            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Não acesse variáveis de ambiente diretamente pelo .env<span
-                class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
+        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left"
+            data-card-name="nao-acesse-variaveis-de-ambiente-diretamento-pelo-env">
+            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Não
+                acesse variáveis de ambiente diretamente pelo .env<span class="show-details text-gray-500 text-lg"
+                    role="button">exibir</span></h3>
             <article class="details pl-3 mt-5 text-lg hidden" role="contentinfo">
-                <p>Você deve estar se perguntando o porquê não pode simplesmente usar o helper <strong>env</strong> diretamente. Isso está ligado à estratégia de caching que o Laravel usa para otimizar o acesso a recursos. Uma vez que as configurações foram armazenadas em cache, o helper <strong>env</strong> não retornará nada além de <i>null</i>. Por isso a recomendação de configurar o acesso à variáveis de ambiente por meio do arquivo de configuração.</p>
+                <p>Você deve estar se perguntando o porquê não pode simplesmente usar o helper <strong>env</strong>
+                    diretamente. Isso está ligado à estratégia de caching que o Laravel usa para otimizar o acesso a
+                    recursos. Uma vez que as configurações foram armazenadas em cache, o helper <strong>env</strong> não
+                    retornará nada além de <i>null</i>. Por isso a recomendação de configurar o acesso à variáveis de
+                    ambiente por meio do arquivo de configuração.</p>
                 <h4 class="text-xl my-3 font-bold">Isso aqui é ruim</h4>
-<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+                <pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
 $apiKey = env('API_KEY');
 </pre>
                 <h4 class="text-xl my-3 font-bold">Como melhorar isso?</h4>
-<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+                <pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
 // No arquivo de configuração: config/api.php
 'key' => env('API_KEY'),
 
 // Acessando o valor
 $apiKey = config('api.key');
 </pre>
-                <p>Ainda adiciono que configurar variáveis de ambiente em arquivos de configuração, permitirá um acesso mais legível à informação, e você poderá ter configurações de natureza diferentes, organizadas em domínios mais semânticos, como no caso acima, em que todas as informações relacionadas à API estarão em um arquivo específico de configurações de API.</p>          
+                <p>Ainda adiciono que configurar variáveis de ambiente em arquivos de configuração, permitirá um acesso
+                    mais legível à informação, e você poderá ter configurações de natureza diferentes, organizadas em
+                    domínios mais semânticos, como no caso acima, em que todas as informações relacionadas à API estarão
+                    em um arquivo específico de configurações de API.</p>
             </article>
         </section>
-        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="nao-acabe-com-a-memoria-use-chunk">
-            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Não acabe com a memória! Use chunk<span
-                class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
+        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left"
+            data-card-name="nao-acabe-com-a-memoria-use-chunk">
+            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Não
+                acabe com a memória! Use chunk<span class="show-details text-gray-500 text-lg"
+                    role="button">exibir</span></h3>
             <article class="details pl-3 mt-5 text-lg hidden" role="contentinfo">
-                <p>Se você é iniciante na área, talvez não tenha se deparado com tarefas que exigiam implementações que precisassem realizar processamentos em grandes volumes de informações, ou certamente, se nasceu nos anos 2000, talvez nunca tenha desenvolvido algo e se preocupado com quanta memória uma operação está consumindo.</p>
-                <p>Isso não é ruim não. Ainda bem que hoje nossa preocupação hoje em dia seja mais com design de arquitetura e capacidade de manutenção do que detalhes de mais baixo nível (isso em âmbito geral), se bem que performance e escalabilidade ainda são assuntos relevantes e sempre terão seu espaço nas discussões dos profissionais da área.</p>
-                <p>Meu ponto aqui é te dizer que com Laravel, quando tu precisar executar uma operação em grandes volumes, cuidado, pois:</p>
+                <p>Se você é iniciante na área, talvez não tenha se deparado com tarefas que exigiam implementações que
+                    precisassem realizar processamentos em grandes volumes de informações, ou certamente, se nasceu nos
+                    anos 2000, talvez nunca tenha desenvolvido algo e se preocupado com quanta memória uma operação está
+                    consumindo.</p>
+                <p>Isso não é ruim não. Ainda bem que hoje nossa preocupação hoje em dia seja mais com design de
+                    arquitetura e capacidade de manutenção do que detalhes de mais baixo nível (isso em âmbito geral),
+                    se bem que performance e escalabilidade ainda são assuntos relevantes e sempre terão seu espaço nas
+                    discussões dos profissionais da área.</p>
+                <p>Meu ponto aqui é te dizer que com Laravel, quando tu precisar executar uma operação em grandes
+                    volumes, cuidado, pois:</p>
                 <h4 class="text-xl my-3 font-bold">Isso aqui é ruim</h4>
-<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+                <pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
 $users = User::where('active', 1)->get(); // Suponha que há 10 mil usuários
 
 $users->each(function($user){
@@ -477,7 +579,7 @@ $users->each(function($user){
 });
 </pre>
                 <h4 class="text-xl my-3 font-bold">Como melhorar isso?</h4>
-<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+                <pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
 User::where('active', 1)
 ->chunkById(200, function ($users) {
     $users->each(function($user){
@@ -485,29 +587,53 @@ User::where('active', 1)
             });
 }, $column = 'id');
 </pre>
-                <p>Veja que na função acima, é invocada uma função chamada <strong>chunkById</strong> que recebe como parâmetros: O número de resultados recuperados por iteração; e um callback para processar os resultados.</p>
-                <p>Isso vai permitir consumir menos memória do que executar um eager loading retornando todos os itens da tabela como na primeira opção, uma vez que a execução será executada em lotes de <strong>200 resultados por consulta</strong>, conforme o exemplo apresentado.</p>
-                <p>Se você pesquisar na documentação oficial verá que há ainda uma função <strong>chunk</strong> que pode ser usada. Não a utilizei no exemplo acima, porque como realizei um filtro na consulta, a função <strong>chunkById</strong> realiza um trabalho melhor, uma vez que usa a coluna ID para identificar o último item retornado na consulta anterior e em ordem crescente será o ponto de partida da próxima consulta.</p>
-                <p>De quebra, ainda usei a função <strong>each</strong> que possui uma legibilidade melhor que escrever uma declaração <strong>foreach</strong>, embora isso tenha haver apenas com legibilidade e não com performance, ou algo dessa natureza.</p>
-                <p>E para fechar, certamente se você é alguém com um conhecimento um pouco mais avançado, deve estar se perguntando: <i>“Por que ele não falou que os resultados poderiam ser executados em uma fila?”</i>. E sim, poderiam, isso faria sentido na execução do comando (enviar o e-mail, conforme proposto no exemplo). Você pode configurar uma fila de envio de e-mails e ao invés de realizar a operação de envio de forma síncrona, um por um, você pode enfileirar as operações para que aconteçam de forma assíncrona.</p>
+                <p>Veja que na função acima, é invocada uma função chamada <strong>chunkById</strong> que recebe como
+                    parâmetros: O número de resultados recuperados por iteração; e um callback para processar os
+                    resultados.</p>
+                <p>Isso vai permitir consumir menos memória do que executar um eager loading retornando todos os itens
+                    da tabela como na primeira opção, uma vez que a execução será executada em lotes de <strong>200
+                        resultados por consulta</strong>, conforme o exemplo apresentado.</p>
+                <p>Se você pesquisar na documentação oficial verá que há ainda uma função <strong>chunk</strong> que
+                    pode ser usada. Não a utilizei no exemplo acima, porque como realizei um filtro na consulta, a
+                    função <strong>chunkById</strong> realiza um trabalho melhor, uma vez que usa a coluna ID para
+                    identificar o último item retornado na consulta anterior e em ordem crescente será o ponto de
+                    partida da próxima consulta.</p>
+                <p>De quebra, ainda usei a função <strong>each</strong> que possui uma legibilidade melhor que escrever
+                    uma declaração <strong>foreach</strong>, embora isso tenha haver apenas com legibilidade e não com
+                    performance, ou algo dessa natureza.</p>
+                <p>E para fechar, certamente se você é alguém com um conhecimento um pouco mais avançado, deve estar se
+                    perguntando: <i>“Por que ele não falou que os resultados poderiam ser executados em uma fila?”</i>.
+                    E sim, poderiam, isso faria sentido na execução do comando (enviar o e-mail, conforme proposto no
+                    exemplo). Você pode configurar uma fila de envio de e-mails e ao invés de realizar a operação de
+                    envio de forma síncrona, um por um, você pode enfileirar as operações para que aconteçam de forma
+                    assíncrona.</p>
                 <blockquote class="border-l-4 border-red-400 bg-gray-200 my-2 p-3 italic">
-                    Pesquise na documentação do Laravel as funções: <strong>lazy</strong> e <strong>lazyById</strong> , pois elas internamente usam a mesma estratégia de <strong>chunk</strong>, porém retornam uma <strong>LazyCollection</strong> que te permite interagir com os resultados individualmente. Por exemplo: <strong>foreach (User::lazy() as $user) { ... }</strong>
+                    Pesquise na documentação do Laravel as funções: <strong>lazy</strong> e <strong>lazyById</strong> ,
+                    pois elas internamente usam a mesma estratégia de <strong>chunk</strong>, porém retornam uma
+                    <strong>LazyCollection</strong> que te permite interagir com os resultados individualmente. Por
+                    exemplo: <strong>foreach (User::lazy() as $user) { ... }</strong>
                 </blockquote>
             </article>
         </section>
-        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="seja-esperto-use-acessors-e-mutators">
-            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Seja esperto! Use acessors e mutators<span
-                class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
+        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left"
+            data-card-name="seja-esperto-use-acessors-e-mutators">
+            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Seja
+                esperto! Use acessors e mutators<span class="show-details text-gray-500 text-lg"
+                    role="button">exibir</span></h3>
             <article class="details pl-3 mt-5 text-lg hidden" role="contentinfo">
-                <p>Falei que evitaria criar relações diretas entre os tópicos para serem um guia de bolso para consultas rápidas, mas esse é um assunto que conversa bem com o tópico em que discutimos o <i>“Não se Repita”</i>.</p>
-                <p>Isso porque, <strong>acessors</strong> e <strong>mutators</strong> foram implementados no Laravel justamente para melhorar o seu dia-a-dia e evitar que fique reescrevendo coisas verbosas o tempo todo em tudo quanto é lugar, veja:</p>
+                <p>Falei que evitaria criar relações diretas entre os tópicos para serem um guia de bolso para consultas
+                    rápidas, mas esse é um assunto que conversa bem com o tópico em que discutimos o <i>“Não se
+                        Repita”</i>.</p>
+                <p>Isso porque, <strong>acessors</strong> e <strong>mutators</strong> foram implementados no Laravel
+                    justamente para melhorar o seu dia-a-dia e evitar que fique reescrevendo coisas verbosas o tempo
+                    todo em tudo quanto é lugar, veja:</p>
                 <h4 class="text-xl my-3 font-bold">Isso aqui é ruim</h4>
-<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+                <pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
 // Aqui seria uma página Blade
 {{ Carbon::createFromFormat('Y-d-m H-i', $product->ordered_at)->format('m-d') }}
 </pre>
                 <h4 class="text-xl my-3 font-bold">Como melhorar isso?</h4>
-<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+                <pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
 protected function orderedAt(): Attribute
 {
     return Attribute::make(
@@ -523,8 +649,11 @@ protected function orderedAt(): Attribute
 // pois o Acessor já fez o trabalho pesado
 {{ $product->ordered_at }}
 </pre>
-                <p>Se você estiver seguindo as convenções de nomes do Laravel, isso funcionará como mostrei acima, pois entende-se que a função <strong>orderedAt</strong> dentro da model <strong>Product</strong> refere-se ao atributo <strong>ordered_at</strong>. Caso você queira criar um acessor com nome de função personalizada, com mais semântica, faça desse jeito:</p>
-<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3 mt-3">
+                <p>Se você estiver seguindo as convenções de nomes do Laravel, isso funcionará como mostrei acima, pois
+                    entende-se que a função <strong>orderedAt</strong> dentro da model <strong>Product</strong>
+                    refere-se ao atributo <strong>ordered_at</strong>. Caso você queira criar um acessor com nome de
+                    função personalizada, com mais semântica, faça desse jeito:</p>
+                <pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3 mt-3">
 protected function orderedAtPtBrFormat(): Attribute
 {
     return Attribute::make(
@@ -537,9 +666,13 @@ protected function orderedAtPtBrFormat(): Attribute
 }
 </pre>
                 <h4 class="text-xl my-3 font-bold">Mas qual a diferença entre um Acessor e um Mutator?</h4>
-                <p>A diferença é que um Acessor, irá formatar o valor antes de exibí-lo e não irá alterar o registro original, uma vez que seu único objetivo é permitir abstrair as apresentações de dados.</p>
-                <p>Já um Mutator, é o contrário, seu papel é formatar a informação para armazenar no banco. Vamos supor que você salva  as datas no seu banco no formato <i>Y-m-d</i>, porém, o formulário no front-end do seu sistema envia a informação no formato <i>d-m-Y</i>. Neste caso, o Mutator vai ser usado para preparar a data antes de salvá-la no banco. Veja:</p>
-<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3 mt-3">
+                <p>A diferença é que um Acessor, irá formatar o valor antes de exibí-lo e não irá alterar o registro
+                    original, uma vez que seu único objetivo é permitir abstrair as apresentações de dados.</p>
+                <p>Já um Mutator, é o contrário, seu papel é formatar a informação para armazenar no banco. Vamos supor
+                    que você salva as datas no seu banco no formato <i>Y-m-d</i>, porém, o formulário no front-end do
+                    seu sistema envia a informação no formato <i>d-m-Y</i>. Neste caso, o Mutator vai ser usado para
+                    preparar a data antes de salvá-la no banco. Veja:</p>
+                <pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3 mt-3">
 protected function orderedAt(): Attribute
 {
     return Attribute::make(
@@ -551,27 +684,36 @@ protected function orderedAt(): Attribute
     );
 }
 </pre>
-                <p>Se olhar com atenção, os acessors são definidos como um callback de get  e mutators são definidos como um callback de <strong>set</strong> que são atributos da classe <strong>Attribute</strong> que abstrai o tratamento customizado de atributos no Laravel.</p>
+                <p>Se olhar com atenção, os acessors são definidos como um callback de get e mutators são definidos como
+                    um callback de <strong>set</strong> que são atributos da classe <strong>Attribute</strong> que
+                    abstrai o tratamento customizado de atributos no Laravel.</p>
             </article>
         </section>
-        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="um-blade-sem-consultas-por-favor">
-            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Um Blade sem consultas, por favor<span
-                class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
+        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left"
+            data-card-name="um-blade-sem-consultas-por-favor">
+            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Um
+                Blade sem consultas, por favor<span class="show-details text-gray-500 text-lg"
+                    role="button">exibir</span></h3>
             <article class="details pl-3 mt-5 text-lg hidden" role="contentinfo">
-                <p>Evite inserir consultas em arquivos blade, pois eles são responsáveis apenas pela camada de apresentação. Mover consultas para essa camada, cria acoplamentos desnecessários, sem falar que você estará espalhando lógica de negócio para tudo quanto é lado. Tenha bom senso 😺</p>
+                <p>Evite inserir consultas em arquivos blade, pois eles são responsáveis apenas pela camada de
+                    apresentação. Mover consultas para essa camada, cria acoplamentos desnecessários, sem falar que você
+                    estará espalhando lógica de negócio para tudo quanto é lado. Tenha bom senso 😺</p>
                 <h4 class="text-xl my-3 font-bold">Isso aqui é horrível</h4>
-<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+                <pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
 @foreach (User::all() as $user)
     {{ $user->profile->name }}
 @endforeach
 </pre>
-                <p>Por que é horrível? Além do motivo que abriu a discussão do tópico, a consulta acima faz <strong>N + 1 consultas (famoso problema N + 1)</strong>, ou seja, se tu for listar os <i>perfis de 100 usuários, serão 101 consultas</i>.</p>
+                <p>Por que é horrível? Além do motivo que abriu a discussão do tópico, a consulta acima faz <strong>N +
+                        1 consultas (famoso problema N + 1)</strong>, ou seja, se tu for listar os <i>perfis de 100
+                        usuários, serão 101 consultas</i>.</p>
                 <blockquote class="border-l-4 border-red-400 bg-gray-200 my-2 p-3 italic">
-                    Agora imagine essa página sendo acessada por mil pessoas. Esse aí seria um claro gargalo de performance.
+                    Agora imagine essa página sendo acessada por mil pessoas. Esse aí seria um claro gargalo de
+                    performance.
                 </blockquote>
                 <p>Mas falando sério, evite esse tipo de código.</p>
                 <h4 class="text-xl my-3 font-bold">Como melhorar isso?</h4>
-<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+                <pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
 // Na controller
 $users = User::with('profile')->get();
 
@@ -581,7 +723,8 @@ $users = User::with('profile')->get();
     {{ $user->profile->name }}
 @endforeach
 </pre>
-                <p>Veja que o blade template só sabe que existem usuários com perfis para apresentar, não sabe a regra aplicada na filtragem, ou qualquer outra regra, e… são apenas 2 consultas.</p>
+                <p>Veja que o blade template só sabe que existem usuários com perfis para apresentar, não sabe a regra
+                    aplicada na filtragem, ou qualquer outra regra, e… são apenas 2 consultas.</p>
                 <h4 class="text-xl my-3 font-bold">Como assim, N + 1?</h4>
                 <p>Em uma visão mais simplificada do problema, tente visualizar o seguinte cenário:</p>
                 <ul class="list-disc pl-6">
@@ -589,7 +732,7 @@ $users = User::with('profile')->get();
                     <li>Você vai acessar uma página que exibe o nome do perfil de cada usuário (relação 1:N);</li>
                     <li>Por debaixo dos panos, o que o exemplo N + 1 faz é:</li>
                 </ul>
-<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+                <pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
 SELECT * FROM users;
 SELECT * FROM profiles WHERE user_id = 1;
 SELECT * FROM profiles WHERE user_id = 2;
@@ -598,21 +741,28 @@ SELECT * FROM profiles WHERE user_id = 3;
 SELECT * FROM profiles WHERE user_id = 100;
 </pre>
                 <p>Porque ele primeiro pega a referência de usuários em 1 consulta e a do perfil nas outras 100.</p>
-                <p>No segundo caso, ele faz uma consulta para retornar os usuários e uma segunda consulta que permitirá retornar os dados do perfil, dessa forma:</p>
-<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+                <p>No segundo caso, ele faz uma consulta para retornar os usuários e uma segunda consulta que permitirá
+                    retornar os dados do perfil, dessa forma:</p>
+                <pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
 SELECT * FROM users;   
 SELECT * FROM profiles WHERE user_id in (1, 2, 3, 4, 5, ...)
 </pre>
-                <p>Isso porque a função <strong>all</strong> vai retornar todos os usuários de uma vez, e toda vez que no loop você acessar a variável <strong>profile</strong> será feita uma nova consulta para pegar a informação de perfil do usuário. A função <strong>with</strong> usa a estratégia de eager loading, que exemplifiquei acima, por isso são realizadas apenas 2 consultas.</p>
+                <p>Isso porque a função <strong>all</strong> vai retornar todos os usuários de uma vez, e toda vez que
+                    no loop você acessar a variável <strong>profile</strong> será feita uma nova consulta para pegar a
+                    informação de perfil do usuário. A função <strong>with</strong> usa a estratégia de eager loading,
+                    que exemplifiquei acima, por isso são realizadas apenas 2 consultas.</p>
             </article>
         </section>
-        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="use-atribuicao-em-massa">
-            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Use atribuição em massa<span
-                class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
+        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left"
+            data-card-name="use-atribuicao-em-massa">
+            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Use
+                atribuição em massa<span class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
             <article class="details pl-3 mt-5 text-lg hidden" role="contentinfo">
-                <p>Quando passar dados de uma requisição para uma model realizar um novo registro, tire proveito das convenções de nomes, e faça uma atribuição em massa, que basicamente vai parametrizar os atributos de requisição e refletir nos atributos da model.</p>
+                <p>Quando passar dados de uma requisição para uma model realizar um novo registro, tire proveito das
+                    convenções de nomes, e faça uma atribuição em massa, que basicamente vai parametrizar os atributos
+                    de requisição e refletir nos atributos da model.</p>
                 <h4 class="text-xl my-3 font-bold">Isso aqui é ruim</h4>
-<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+                <pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
 $post = new Post;
 $post->title = $request->title;
 $post->content = $request->content;
@@ -620,20 +770,22 @@ $post->verified = $request->verified;
 $post->save();
 </pre>
                 <h4 class="text-xl my-3 font-bold">Como melhorar isso?</h4>
-<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+                <pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
 $post->create($request->all());
 </pre>
-            <p>Isso reduz muito a quantidade de linhas escritas, sem perder a legibilidade.</p>
+                <p>Isso reduz muito a quantidade de linhas escritas, sem perder a legibilidade.</p>
             </article>
         </section>
-        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="referencias">
-            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Referências<span
-                class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
+        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left"
+            data-card-name="referencias">
+            <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">
+                Referências<span class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
             <article class="details pl-6 mt-5 text-lg hidden" role="contentinfo">
                 <ul class="list-disc">
                     <li><a href="https://laravel.com/docs/9.x/installation">Documentação oficial do Laravel</a></li>
                     <li><a href="https://github.com/jonaselan/laravel-best-practices">Laravel best practices</a></li>
-                    <li>Clean Code: A Handbook of Agile Software Craftsmanship. Martin, R.C. 9780132350884. 2009. Prentice Hall</li>
+                    <li>Clean Code: A Handbook of Agile Software Craftsmanship. Martin, R.C. 9780132350884. 2009.
+                        Prentice Hall</li>
                 </ul>
             </article>
         </section>
@@ -659,14 +811,15 @@ $post->create($request->all());
                 details.classList.add('hidden');
             }
         };
-    
+
         const cards = new Map();
-    
+
         document.querySelectorAll('.collapsible-card').forEach(el => {
             const view = Object.create(CardView);
             cards.set(el.getAttribute("data-card-name"), view.init(el))
         });
-    
+
     </script>
 </body>
+
 </html>
