@@ -558,7 +558,52 @@ protected function orderedAt(): Attribute
             <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Um Blade sem consultas, por favor<span
                 class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
             <article class="details pl-3 mt-5 text-lg hidden" role="contentinfo">
-                <p>logo mais</p>
+                <p>Evite inserir consultas em arquivos blade, pois eles são responsáveis apenas pela camada de apresentação. Mover consultas para essa camada, cria acoplamentos desnecessários, sem falar que você estará espalhando lógica de negócio para tudo quanto é lado. Tenha bom senso 😺</p>
+                <h4 class="text-xl my-3 font-bold">Isso aqui é horrível</h4>
+<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+@foreach (User::all() as $user)
+    {{ $user->profile->name }}
+@endforeach
+</pre>
+                <p>Por que é horrível? Além do motivo que abriu a discussão do tópico, a consulta acima faz <strong>N + 1 consultas (famoso problema N + 1)</strong>, ou seja, se tu for listar os <i>perfis de 100 usuários, serão 101 consultas</i>.</p>
+                <blockquote class="border-l-4 border-red-400 bg-gray-200 my-2 p-3 italic">
+                    Agora imagine essa página sendo acessada por mil pessoas. Esse aí seria um claro gargalo de performance.
+                </blockquote>
+                <p>Mas falando sério, evite esse tipo de código.</p>
+                <h4 class="text-xl my-3 font-bold">Como melhorar isso?</h4>
+<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+// Na controller
+$users = User::with('profile')->get();
+
+// No blade
+
+@foreach ($users as $user)
+    {{ $user->profile->name }}
+@endforeach
+</pre>
+                <p>Veja que o blade template só sabe que existem usuários com perfis para apresentar, não sabe a regra aplicada na filtragem, ou qualquer outra regra, e… são apenas 2 consultas.</p>
+                <h4 class="text-xl my-3 font-bold">Como assim, N + 1?</h4>
+                <p>Em uma visão mais simplificada do problema, tente visualizar o seguinte cenário:</p>
+                <ul class="list-disc pl-6">
+                    <li>Você possui uma base com 100 usuários;</li>
+                    <li>Você vai acessar uma página que exibe o nome do perfil de cada usuário (relação 1:N);</li>
+                    <li>Por debaixo dos panos, o que o exemplo N + 1 faz é:</li>
+                </ul>
+<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+SELECT * FROM users;
+SELECT * FROM profiles WHERE user_id = 1;
+SELECT * FROM profiles WHERE user_id = 2;
+SELECT * FROM profiles WHERE user_id = 3;
+...
+SELECT * FROM profiles WHERE user_id = 100;
+</pre>
+                <p>Porque ele primeiro pega a referência de usuários em 1 consulta e a do perfil nas outras 100.</p>
+                <p>No segundo caso, ele faz uma consulta para retornar os usuários e uma segunda consulta que permitirá retornar os dados do perfil, dessa forma:</p>
+<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+SELECT * FROM users;   
+SELECT * FROM profiles WHERE user_id in (1, 2, 3, 4, 5, ...)
+</pre>
+                <p>Isso porque a função <strong>all</strong> vai retornar todos os usuários de uma vez, e toda vez que no loop você acessar a variável <strong>profile</strong> será feita uma nova consulta para pegar a informação de perfil do usuário. A função <strong>with</strong> usa a estratégia de eager loading, que exemplifiquei acima, por isso são realizadas apenas 2 consultas.</p>
             </article>
         </section>
         <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="use-atribuicao-em-massa">
