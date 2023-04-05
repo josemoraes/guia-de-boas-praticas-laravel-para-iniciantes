@@ -202,7 +202,47 @@ public function store(ProductRequest $request)
             <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Já diziam os Menudos: "Não se repita"<span
                 class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
             <article class="details pl-3 mt-5 text-lg hidden" role="contentinfo">
-                <p>logo mais</p>
+                <p>Tenho certeza que essa música vai ficar na sua cabeça pelo resto do seu dia: <i>“Não se repita, não se repita (…)”</i>.</p>
+                <p>O conceito de DRY (Dont Repeat Yourself - Não se Repita) parece óbvio, aliás, quem gosta de escrever o mesmo código em vários lugares diferentes, sem reaproveitar nada? 🤨</p>
+                <p>Desculpa estragar seu sorrisinho de canto de boca, mas <strong>CTRL + C</strong> e <strong>CTRL + V</strong> não é bem reaproveitamento de código no conceito DRY.</p>
+                <p>A verdade é que <i>“Não se Repetir”</i> aqui é abstrair alguma lógica em um escopo com fronteiras bem definidas e acessar esse escopo por uma instância dele. Veja:</p>
+                <h4 class="text-xl my-3 font-bold">Isso aqui é ruim</h4>
+<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+public function getActive()
+{
+    return $this->where('verified', 1)->get();
+}
+
+public function getPosts()
+{
+    return $this->whereHas('user', function ($q) {
+            $q->where('verified', 1);
+        })->get();
+}
+</pre>
+                <p>Veja que nas duas funções, é feita uma query para verificar se o usuário foi verificado.</p>
+                <h4 class="text-xl my-3 font-bold">Como melhorar isso?</h4>
+<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+public function scopeVerified($q)
+{
+    return $q->where('verified', 1);
+}
+
+public function getActive()
+{
+    return $this->verified()->get();
+}
+
+public function getArticles()
+{
+    return $this->whereHas('user', function ($q) {
+            $q->verified();
+        })->get();
+}
+</pre>
+                <p>Veja que aqui, usei o conceito de query scopes (escopos de consulta) do Eloquent ORM usado pelo Laravel, e abstraí a lógica de consulta que aplica o filtro de usuário verificado e apenas reaproveitei o uso do escopo nas demais funções.</p>
+                <p>Vale lembrar que aqui só usei o conceito de query scopes, para aproveitar a oportunidade de mostrar como eles funcionam e explicar o conceito ao mesmo tempo, porém, o conceito de DRY deve ser aplicado toda vez que você perceber que um mesmo trecho de código está sendo usado em outros lugares. Se você estiver fazendo muito <strong>CTRL + C</strong> e <strong>CTRL + V</strong> de um trecho de código, certamente é uma oportunidade clara de aplicar o DRY.</p>
+                <p>Fique sempre atento e refatore quando necessário.</p>
             </article>
         </section>
         <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="coloque-um-nome-decente">
