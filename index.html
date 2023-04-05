@@ -499,7 +499,59 @@ User::where('active', 1)
             <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Seja esperto! Use acessors e mutators<span
                 class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
             <article class="details pl-3 mt-5 text-lg hidden" role="contentinfo">
-                <p>logo mais</p>
+                <p>Falei que evitaria criar relações diretas entre os tópicos para serem um guia de bolso para consultas rápidas, mas esse é um assunto que conversa bem com o tópico em que discutimos o <i>“Não se Repita”</i>.</p>
+                <p>Isso porque, <strong>acessors</strong> e <strong>mutators</strong> foram implementados no Laravel justamente para melhorar o seu dia-a-dia e evitar que fique reescrevendo coisas verbosas o tempo todo em tudo quanto é lugar, veja:</p>
+                <h4 class="text-xl my-3 font-bold">Isso aqui é ruim</h4>
+<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+// Aqui seria uma página Blade
+{{ Carbon::createFromFormat('Y-d-m H-i', $product->ordered_at)->format('m-d') }}
+</pre>
+                <h4 class="text-xl my-3 font-bold">Como melhorar isso?</h4>
+<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3">
+protected function orderedAt(): Attribute
+{
+    return Attribute::make(
+        get: fn ($value) => 
+                    Carbon::createFromFormat(
+                        'Y-d-m H-i',
+                        $value
+                    )->format('m-d'),
+    );
+}
+
+// Quando for usar, o atributo já estará formatado, 
+// pois o Acessor já fez o trabalho pesado
+{{ $product->ordered_at }}
+</pre>
+                <p>Se você estiver seguindo as convenções de nomes do Laravel, isso funcionará como mostrei acima, pois entende-se que a função <strong>orderedAt</strong> dentro da model <strong>Product</strong> refere-se ao atributo <strong>ordered_at</strong>. Caso você queira criar um acessor com nome de função personalizada, com mais semântica, faça desse jeito:</p>
+<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3 mt-3">
+protected function orderedAtPtBrFormat(): Attribute
+{
+    return Attribute::make(
+        get: fn ($value, $attributes) => 
+                    Carbon::createFromFormat(
+                        'Y-d-m H-i', 
+                        $attributes['ordered_at']
+                    )->format('d-m-Y H-i'),
+    );
+}
+</pre>
+                <h4 class="text-xl my-3 font-bold">Mas qual a diferença entre um Acessor e um Mutator?</h4>
+                <p>A diferença é que um Acessor, irá formatar o valor antes de exibí-lo e não irá alterar o registro original, uma vez que seu único objetivo é permitir abstrair as apresentações de dados.</p>
+                <p>Já um Mutator, é o contrário, seu papel é formatar a informação para armazenar no banco. Vamos supor que você salva  as datas no seu banco no formato <i>Y-m-d</i>, porém, o formulário no front-end do seu sistema envia a informação no formato <i>d-m-Y</i>. Neste caso, o Mutator vai ser usado para preparar a data antes de salvá-la no banco. Veja:</p>
+<pre class="whitespace-pre-wrap bg-gray-700 text-white px-5 py-3 mb-3 mt-3">
+protected function orderedAt(): Attribute
+{
+    return Attribute::make(
+        set: fn ($value) => 
+                Carbon::createFromFormat(
+                    'd-m-Y',
+                    $value
+                )->format('Y-m-d'),
+    );
+}
+</pre>
+                <p>Se olhar com atenção, os acessors são definidos como um callback de get  e mutators são definidos como um callback de <strong>set</strong> que são atributos da classe <strong>Attribute</strong> que abstrai o tratamento customizado de atributos no Laravel.</p>
             </article>
         </section>
         <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="um-blade-sem-consultas-por-favor">
@@ -516,7 +568,7 @@ User::where('active', 1)
                 <p>logo mais</p>
             </article>
         </section>
-        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="use-atribuicao-em-massa">
+        <section class="collapsible-card bg-white border-2 border-gray-200 rounded mt-3 p-7 text-left" data-card-name="referencias">
             <h3 class="text-2xl text-red-500 font-bold border-bottom flex flex-row items-center justify-between">Referências<span
                 class="show-details text-gray-500 text-lg" role="button">exibir</span></h3>
             <article class="details pl-6 mt-5 text-lg hidden" role="contentinfo">
